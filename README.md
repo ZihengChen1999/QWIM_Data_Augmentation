@@ -2,7 +2,7 @@
 
 Team name: 
 
-Hahahahaha(place holder)
+Quant Quartet
 
 Team members:
 
