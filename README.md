@@ -1,4 +1,4 @@
-# Machine learning (and more) for scenario generation and data augmentation in quantitative wealth and investment managem
+# Machine learning for scenario generation and data augmentation
 
 ## Team name: Hahahahaha(place holder)
 
