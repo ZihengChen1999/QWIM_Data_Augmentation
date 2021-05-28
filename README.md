@@ -1,8 +1,10 @@
 # Machine learning for scenario generation and data augmentation
 
-## Team name: Hahahahaha(place holder)
+Team name: 
 
-## Team members:
+Hahahahaha(place holder)
+
+Team members:
 
 Ziheng	Chen	zc2068@nyu.edu
 
