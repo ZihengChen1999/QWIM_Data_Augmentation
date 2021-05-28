@@ -1,10 +1,10 @@
-# QWIM_Data_Augmentation
+# Machine learning (and more) for scenario generation and data augmentation in quantitative wealth and investment managem
 
-Team name:
+# Team name:
 
-Hahahahaha(place holder)
+# Hahahahaha(place holder)
 
-Team members:
+# Team members:
 
 Ziheng	Chen	zc2068@nyu.edu
 
