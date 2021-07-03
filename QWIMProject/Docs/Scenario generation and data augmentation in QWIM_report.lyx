@@ -1,0 +1,2139 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\input{Preamble_QWIMProjects_refs.tex}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format pdf5
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "colorlinks=true,citecolor=blue"
+\papersize letterpaper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style plain
+\biblatex_bibstyle authoryear
+\biblatex_citestyle authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 3cm
+\rightmargin 2cm
+\bottommargin 3cm
+\headheight 1cm
+\headsep 1cm
+\footskip 0.5cm
+\secnumdepth 4
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 1 0 24 -1
+\bullet 3 0 5 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Machine learning (and more) for scenario generation and data augmentation
+ in quantitative wealth and investment management 
+\begin_inset Formula ${\color{purple}\mathbb{QWIM}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+The authors
+\end_layout
+
+\begin_layout Date
+The date, 2021
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Motivation for the project
+\end_layout
+
+\begin_layout Standard
+Statistical risk management approaches like Value at Risk (VaR) proved largely
+ ineffective in addressing the kinds of market movements that occurred with
+ past crisis periods.
+ Scenario analysis addresses many of the shortcomings of the statistical
+ approache, since it is both forward looking and also able to draw on historical
+ experience that might not be represented in the development samples for
+ statistical approaches.
+\end_layout
+
+\begin_layout Standard
+There is a need to conduct rigorous and systematic scenario analysis.
+ A key challenge in applying scenario analysis is constructing “tail event”
+ scenarios that are severe but plausible.
+ We can assess scenario’s plausibility by reference to the behavior of observabl
+e variables used to define the scenario (e.g., asset prices, bond yields,
+ credit spreads, etc.).
+ To generate realistic scenarios in all relevant market regimes we can use
+ use machine learning approaches to identify regimes.
+\end_layout
+
+\begin_layout Standard
+Additional scenarios can also be generated through 
+\begin_inset Quotes eld
+\end_inset
+
+data augmentation
+\begin_inset Quotes erd
+\end_inset
+
+ algorithms used in machine learning (e.g., through transfer learning or generativ
+e adversarial networks GANs).
+\end_layout
+
+\begin_layout Subsection
+Need for additional data for 
+\begin_inset Formula $\mathbb{QWIM}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Not having sufficient data (due to medium to low sampling frequency and/or
+ limited historical data) will have an impact on
+\end_layout
+
+\begin_layout Itemize
+adequately training 
+\shape smallcaps
+
+\begin_inset Formula $\mathbb{ML}$
+\end_inset
+
+ 
+\shape default
+models
+\end_layout
+
+\begin_layout Itemize
+tackling unbalanced datasets
+\end_layout
+
+\begin_layout Itemize
+data anonymization and preserving of data privacy
+\end_layout
+
+\begin_layout Itemize
+comprehensive testing of investment strategies and portfolios
+\end_layout
+
+\begin_layout Itemize
+robust portfolio construction
+\end_layout
+
+\begin_layout Itemize
+portfolio risk management
+\end_layout
+
+\begin_layout Standard
+Synthetic data can be obtained through
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathbb{ML}$
+\end_inset
+
+-based data augmentation 
+\series bold
+\color purple
+DAug
+\end_layout
+
+\begin_layout Itemize
+data similarity with data in other time periods 
+\end_layout
+
+\begin_layout Itemize
+combine observations with expert views
+\end_layout
+
+\begin_layout Itemize
+agent based modeling
+\end_layout
+
+\begin_layout Itemize
+scenario generation
+\end_layout
+
+\begin_layout Itemize
+construction of stress scenarios 
+\end_layout
+
+\begin_layout Subsection
+Using ML to generate synthetic data for 
+\begin_inset Formula $\mathbb{QWIM}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There is significant need for additional data in
+\color brown
+ 
+\begin_inset Formula $\mathbb{QWIM}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+for adequately training 
+\color brown
+
+\begin_inset Formula $\mathbb{ML}$
+\end_inset
+
+
+\color inherit
+ models
+\end_layout
+
+\begin_layout Itemize
+to tackle unbalanced datasets
+\end_layout
+
+\begin_layout Itemize
+for constructing a very comprehensive set of scenarios incorporating most
+ scenarios which were not observed, yet are plausible and consistent with
+ market and investor behavior and with economic intuition
+\end_layout
+
+\begin_layout Itemize
+for data anonymization and preserving of data privacy 
+\end_layout
+
+\begin_layout Itemize
+for comprehensive testing of investment strategies and portfolios
+\end_layout
+
+\begin_layout Itemize
+for constructing much more robust portfolios using scenario-based optimization
+\end_layout
+
+\begin_layout Itemize
+for better risk management of investment portfolios
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Assefa-et-al-2019"
+literal "false"
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+synthetic data defined as data obtained from a generative process that learns
+ properties of real data
+\end_layout
+
+\begin_layout Standard
+Synthetic financial 
+\color brown
+
+\begin_inset Formula $\mathbb{TS}$
+\end_inset
+
+ 
+\color inherit
+data is expected to have universal features, commonly referred to as stylized
+ facts, together with specialized features of a specific asset class or
+ investment vehicle.
+ When classical approaches are considered, these stylized facts are often
+ formulated in terms of distribution of returns.
+\end_layout
+
+\begin_layout Standard
+Most promising 
+\color brown
+
+\begin_inset Formula $\mathbb{ML}$
+\end_inset
+
+
+\color inherit
+ methods to generate synthetic financial 
+\color brown
+
+\begin_inset Formula $\mathbb{TS}$
+\end_inset
+
+
+\color inherit
+:
+\end_layout
+
+\begin_layout Itemize
+generative adversarial networks GANS
+\end_layout
+
+\begin_layout Itemize
+Variational Autoencoders VAEs
+\end_layout
+
+\begin_layout Itemize
+Restricted Boltzmann Machine RBM
+\end_layout
+
+\begin_layout Section
+Literature Review
+\end_layout
+
+\begin_layout Standard
+Main references:
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Buehler-et-al-2019"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Buehler-et-al-2020"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Buehler-et-al-2020a"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Cubuk-et-al-2019"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "DaSilva-Shi-2019"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "DeMeerPardo-2019"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "FrancoPedroso-et-al-2019"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "FrancoPedroso-et-al-2019a"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Golub-et-al-2018"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "He-et-al-2019d"
+literal "false"
+
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Kondratyev-Schwarz-2020"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Koshiyama-et-al-2021"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Mariani-et-al-2019"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Marti-2020"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Kuchnik-Smith-2018"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Rosen-Saunders-2016"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Rosen-2015a"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Takahashi-et-al-2019"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Wang-et-al-2019a"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Wiese-et-al-2020"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Zhang-et-al-2018i"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Subsection
+Market-driven scenarios
+\end_layout
+
+\begin_layout Standard
+References:
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Bass-et-al-2018"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Golub-et-al-2018"
+literal "false"
+
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Subsection
+Scenarios built from a subset of factors
+\end_layout
+
+\begin_layout Standard
+References:
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Glasserman-et-al-2015"
+literal "false"
+
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Rosen-Saunders-2016"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Rosen-Saunders-2015"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Rosen-2015"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Rosen-2015a"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Subsection
+Incorporating expert views within scenarios
+\end_layout
+
+\begin_layout Standard
+References: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Bolger-Wright-2017"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Colson-Cooke-2017"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Davis-Lleo-2016"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Davis-Lleo-2015"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Franses-deBruijn-2017"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Gzyl-et-al-2017"
+literal "false"
+
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Hsu-et-al-2016b"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Johnson-West-2018"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Nguyen-Chamroukhi-2018"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Panchekha-et-al-2018"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Silva-et-al-2017"
+literal "false"
+
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Wood-2018"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Subsection
+Data augmentation and scenarios generated using machine learning
+\end_layout
+
+\begin_layout Standard
+References:
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Buehler-et-al-2020"
+literal "false"
+
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "DeMeerPardo-Lopez-2020"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "FrancoPedroso-et-al-2019a"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "FrancoPedroso-et-al-2019"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Kondratyev-Schwarz-2020"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Koshiyama-et-al-2021"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Lezmi-et-al-2020"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Marti-2020"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Takahashi-et-al-2019"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Wiese-et-al-2020"
+literal "false"
+
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Subsection
+Scenarios based on flexible probabilities
+\end_layout
+
+\begin_layout Standard
+Refeernces:
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Ardia-Bluteau-2017"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Meucci-et-al-2012"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Sebastian-Gebbie-2019"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Subsection
+Scenarios based on bootstrapping
+\end_layout
+
+\begin_layout Standard
+References:
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Bertsimas-Vanparys-2017"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Cavaliere-et-al-2020"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Cogneau-Zakamouline-2013"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "ElKaroui-Purdom-2018"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Hambuckers-Heuchenne-2016"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Honore-Hu-2017"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Horowitz-2019"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Page-2013a"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Romano-Wolf-2018"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Sani-et-al-2015"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Tsamardinos-et-al-2018"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Wang-Tu-2014"
+literal "true"
+
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Subsection
+Scenarios based on resampling
+\end_layout
+
+\begin_layout Standard
+References:
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Chihara-Hesterberg-2018"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Frahm-2015"
+literal "true"
+
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Mammen-Nandi-2012"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Michaud-Michaud-2015"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Oneto-2019"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Sarris-et-al-2020"
+literal "true"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Subsection
+Scenarios based on similarities and discords within time series
+\end_layout
+
+\begin_layout Standard
+References:
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Gharghabi-et-al-2018"
+literal "false"
+
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Kegel-et-al-2018"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Kegel-et-al-2017"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Linardi-et-al-2018"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Mikalsen-et-al-2018"
+literal "false"
+
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Yeh-et-al-2017a"
+literal "false"
+
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Yeh-2020a"
+literal "false"
+
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Zhu-et-al-2018a"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Zhu-et-al-2018b"
+literal "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Section
+Some examples of formulas, figures, tables
+\end_layout
+
+\begin_layout Subsection
+Examples of formulas
+\end_layout
+
+\begin_layout Subsubsection
+Example One
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{\mu^{\left(L1\right)}} & =\left[\begin{array}{c}
+\mu_{1}^{\left(L1\right)}\\
+\mu_{2}^{\left(L1\right)}\\
+\cdots\\
+\mu_{N_{1}-1}^{\left(L1\right)}\\
+\mu_{N_{1}}^{\left(L1\right)}
+\end{array}\right],\,\,\,\,\,\,\boldsymbol{\sigma^{\left(L1\right)}}=\left[\begin{array}{c}
+\sigma_{1}^{\left(L1\right)}\\
+\sigma_{2}^{\left(L1\right)}\\
+\cdots\\
+\sigma_{N_{1}-1}^{\left(L1\right)}\\
+\sigma_{N_{1}}^{\left(L1\right)}
+\end{array}\right]\\
+\boldsymbol{\Upsilon^{\left(L1\right)}} & =\left[\begin{array}{ccccc}
+1 & \rho_{1,2}^{\left(L1\right)} & \cdots & \rho_{1,N1-1}^{\left(L1\right)} & \rho_{1,N1}^{\left(L1\right)}\\
+\rho_{1,2}^{\left(L1\right)} & 1 & \cdots & \cdots & \rho_{2,N_{1}}^{\left(L1\right)}\\
+\cdots & \cdots & 1 & \cdots & \cdots\\
+\rho_{1,N_{1}-1}^{\left(L1\right)} & \cdots & \cdots & 1 & \rho_{N_{1}-1,N_{1}}^{\left(L1\right)}\\
+\rho_{1,N_{1}}^{\left(L1\right)} & \rho_{2,N_{1}}^{\left(L1\right)} & \cdots & \rho_{N_{1}-1,N_{1}}^{\left(L1\right)} & 1
+\end{array}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Example Two
+\end_layout
+
+\begin_layout Standard
+Given a number of samples 
+\begin_inset Formula $NS$
+\end_inset
+
+, the standard error of 
+\begin_inset Formula $p^{th}$
+\end_inset
+
+ quantile is given by formula:
+\begin_inset Formula 
+\[
+SE_{Q}\left(p\right)\triangleq\frac{\sigma\left[NS\right]\times\sqrt{p\left(1-p\right)}}{\sqrt{NS}\times\phi\left(z\left(p\right)\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $z(p)$
+\end_inset
+
+ is the 
+\begin_inset Formula $p^{th}$
+\end_inset
+
+ quantile of the standard normal distribution, 
+\begin_inset Formula $\phi\left(z\left(p\right)\right)$
+\end_inset
+
+ is the density function of the standard normal distribution evaluated at
+ the position 
+\begin_inset Formula $z(p)$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma\left[NS\right]$
+\end_inset
+
+ is the standard deviation
+\begin_inset Formula 
+\begin{equation}
+\sigma\left[NS\right]\triangleq\sqrt{\frac{1}{NS-1}{\displaystyle \sum_{j=1}^{NS}\left(X_{j}-\bar{X}\right)^{2}}}\label{eq:EquationTwo}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The confidence interval (given a confidence level 
+\begin_inset Formula $\alpha$
+\end_inset
+
+) of a quantile is given by
+\begin_inset Formula 
+\[
+CI_{1-\alpha}\left(p\right)\triangleq\frac{1}{\sqrt{NS}}\times SE_{Q}\left(p\right)\times t_{NS-1}\left(0.5\alpha,1-0.5\alpha\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $t_{NS-1}\left(0.5\alpha,1-0.5\alpha\right)$
+\end_inset
+
+ relies on the 
+\begin_inset Formula $t-$
+\end_inset
+
+distribution based on 
+\begin_inset Formula $NS-1$
+\end_inset
+
+ degrees of freedom
+\end_layout
+
+\begin_layout Subsection
+Examples of figures
+\end_layout
+
+\begin_layout Subsubsection
+Example One
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Figure One
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graphics/FigureOne.PNG
+	lyxscale 30
+	width 80text%
+	height 3in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Example Two
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Figure Two
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graphics/FigureTwo.PNG
+	lyxscale 30
+	width 85text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Examples of tables
+\end_layout
+
+\begin_layout Subsubsection
+Example One
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Table One
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="9">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ME
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RMSE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MAE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MPE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MAPE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MASE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RMSSE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ACF1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ModelOne
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0033
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.6432
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.4187
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0041
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1232
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0355
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0524
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2509
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ModelTwo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0359
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.7472
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5056
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2041
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1601
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0429
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0609
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.0043
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ModelThree
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.6831
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.4652
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.0032
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1414
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0391
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0557
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0091
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ModelFour
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.7888
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5525
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.0077
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1829
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0466
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0064
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2834
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "../Bibliography/ScenarioGeneration_DataAugmentation_QWIM"
+options "bibtotoc"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+appendix
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Appendix A: First Appendix} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+section*{Appendix A: First Appendix} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{appendix:AppendixA}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+theequation}{A.
+\backslash
+arabic{equation}} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{equation}{0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Content for first appendix would go here.
+\end_layout
+
+\begin_layout Subsection*
+Utility gains for a mean variance investor
+\end_layout
+
+\begin_layout Standard
+Let us assume that a mean–variance investor with relative risk aversion
+ parameter 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ will decide at the end of period 
+\begin_inset Formula $T$
+\end_inset
+
+ to allocate to the risky asset the following share of a portfolio in period
+ 
+\begin_inset Formula $T+1$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+w_{T}^{Model}=\frac{1}{\gamma}\left(\frac{Y_{T+1}^{Model}}{\hat{\sigma}_{T+1}^{2}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $P_{T+1}^{Model}$
+\end_inset
+
+ is the forecast of the model, and 
+\begin_inset Formula $\hat{\sigma}_{T+1}^{2}$
+\end_inset
+
+ is the rolling window estimate of the variance of returns.
+\end_layout
+
+\end_body
+\end_document
